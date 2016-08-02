@@ -50,4 +50,4 @@ client.connect({onSuccess:onConnect});
 
 # Broker
 
-Now the mqtt broker that you use must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Here is an [example](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js) that uses another broker ([aedes](https://github.com/mcollina/aedes)), which makes it very easy to get websocket support up and running.
+Now if you are running your own mqtt broker, it must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Here is an [example](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js) that uses another broker ([aedes](https://github.com/mcollina/aedes)), which makes it very easy to get websocket support up and running.
