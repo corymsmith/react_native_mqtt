@@ -16,9 +16,11 @@ To use the library just pass in the options for the local storage module ([react
 
 ```
 import { initMqtt } from 'react_native_mqtt';
+import { AsyncStorage } from 'react-native';
 
 initMqtt({
     size: 10000,
+    storageBackend: AsyncStorage,
     defaultExpires: 1000 * 3600 * 24,
     enableCache: true,
     sync : {
