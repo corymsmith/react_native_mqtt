@@ -52,5 +52,5 @@ client.connect({onSuccess:onConnect});
 
 # Examples
 
-- Using the aedes broker to support websockets: [link](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js)
+- Using the [aedes](https://github.com/mcollina/aedes) broker to handle websocket and standard connections: [link](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js)
 - Usage of this package within a react native application via [redux sagas](https://github.com/yelouafi/redux-saga): [TODO]()
