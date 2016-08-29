@@ -1,6 +1,6 @@
 # React Native Mqtt
 
-This project is a wrapper around the javascript implementation of the [paho mqtt client library](https://eclipse.org/paho/clients/js/) to provide drop in compatibility with react native. If you happen to be running your own mqtt broker, it must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Here is an [example](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js) that uses another broker ([aedes](https://github.com/mcollina/aedes)), which makes it very easy to get websocket support up and running.
+This project is a wrapper around the javascript implementation of the [paho mqtt client library](https://eclipse.org/paho/clients/js/) to provide drop in compatibility with react native. If you happen to be running your own mqtt broker, it must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Another broker that does have support for websockets is [aedes](https://github.com/mcollina/aedes), which is the broker I use personally.
 
 # Install
 
@@ -49,3 +49,8 @@ client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 client.connect({onSuccess:onConnect});
 ```
+
+# Examples
+
+- Using the aedes broker to support websockets: [link](https://github.com/Introvertuous/smart_home/blob/master/hub/lib/mqtt.js)
+- Usage of this package within a react native application via [redux sagas](https://github.com/yelouafi/redux-saga): [TODO]()
