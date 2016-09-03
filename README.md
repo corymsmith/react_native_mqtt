@@ -1,6 +1,6 @@
 # React Native Mqtt
 
-This project is a wrapper around the javascript implementation of the [paho mqtt client library](https://eclipse.org/paho/clients/js/) to provide drop in compatibility with react native. If you happen to be running your own mqtt broker, it must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Another broker that does have support for websockets is [aedes](https://github.com/mcollina/aedes), which is the broker I use personally.
+This package is a wrapper around the javascript implementation of the [paho mqtt client library](https://eclipse.org/paho/clients/js/) to provide drop in compatibility with react native. If you happen to be running your own mqtt broker, it must support websockets for a connection to be possible. [Mosquitto](https://mosquitto.org/) does not support websockets out of the box and will require some extra work. Another broker that does have support for websockets is [aedes](https://github.com/mcollina/aedes), which is the broker I use personally.
 
 # Install
 
