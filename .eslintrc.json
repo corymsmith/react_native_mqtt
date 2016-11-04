@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": false,
+        "jest": true
+    },
+    "extends": "eslint:recommended",
+    "installedESLint": true,
+    
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "classes": true
+        }
+    },
+    "plugins": [
+    ],
+    "rules": {
+        "no-constant-condition": 0,
+        "indent": ["error", 2],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"]
+    }
+}

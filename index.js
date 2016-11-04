@@ -1,8 +1,7 @@
 
 import Storage from 'react-native-storage';
 
-export const initMqtt = function(opts) {
-  var storage = new Storage(opts);
-  window.localStorage = storage;
+export default (opts) => {
+  window.localStorage = new Storage(opts);
   require('./mqttws31');
 }
