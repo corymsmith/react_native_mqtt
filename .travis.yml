@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- stable
+cache:
+  yarn: true
+  directories:
+  - node_modules
+deploy:
+  provider: npm
+  email: theramin108@gmail.com
+  api_key:
+    secure: Rq2+hzhTi1SV1HPc66s0aNoTMohYnQBInH3++bE9QJOPpEN9VPis7YsQQPDjeRK8Pxb+v43x5r4RY4/cENYxMBnjFlvMncyMSlh7HhNCNufuQCK3INkoCDjKcbj5J1OG8ZVHXoOWhBL1UOYkK9/LAtfFXA9Cm0bkekzhlTe0oV6qMIfX0NO12cE0H58LVSDJzqmxCGVxVoaE++Tt2MvdokCtl/4DOWkTo096+UI1Wx96VwdYW5Xwai2ICiTS3HN7V2Pc409KtjqSI9p0/inBhETFNPgcXo12Qbq8C3rPF0ziFhY5hp44GC4Kx4dl28H5GjLum/BJDI4KaGFpZ2X+MgzuK6vkZN+Qqu3HFMOobViFWupD0uGjKvDNt3lavfeklHI6s/rdJO5rL467zadvfmAn6i24AhrOQUY//CUNGro7EkFAYd90w9wta+CuK5vUWJ8tBHQYrQckCGoj8Xxvs+d95+Z/fmaCgAAhfb0edtwq4Fu7/UZ36GvXlGwyOuLhhSNZCEzhVxGOk5/VSk4K5cMzwCoTOD0jzQAA13U/1airxRgV1TMfYWZDousPMQRwGlB3VwSk6y3pHaZBy6c/eN06aqSauJoEwldahtTK6Dkeov7vv7lsm4OVPPMU66+o7xs/r0+psnRrYKLh8GJQIW4wi+p0STshjFtdy1U4oys=
+  on:
+    all_branches: true
