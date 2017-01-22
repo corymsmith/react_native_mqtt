@@ -13,7 +13,7 @@ npm install react_native_mqtt --save
 ## Usage
 
 To use the library just pass in the options for the local storage module ([react-native-storage](https://github.com/sunnylqm/react-native-storage)) and the paho object will be attached to global scope.
-```javsacript
+```javascript
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
 
