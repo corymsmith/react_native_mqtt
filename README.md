@@ -53,7 +53,7 @@ client.connect({onSuccess:onConnect});
 ## Examples
 
 - Using the [aedes](https://github.com/mcollina/aedes) broker to handle websocket and standard connections
-```
+```javacsript
 var net = require('net');
 var aedes = require('aedes');
 var websocket = require('websocket-stream');
@@ -69,7 +69,7 @@ exports.listen = function() {
 ```
 
 - Usage of this package in a react native application using [redux sagas](https://github.com/yelouafi/redux-saga): 
-```
+```javascript
 import { take, call, put, select } from 'redux-saga/effects'
 import Types from '../Actions/Types'
 import Actions from '../Actions/Creators'
