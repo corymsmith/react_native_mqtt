@@ -13,8 +13,7 @@ npm install react_native_mqtt --save
 ## Usage
 
 To use the library just pass in the options for the local storage module ([react-native-storage](https://github.com/sunnylqm/react-native-storage)) and the paho object will be attached to global scope.
-
-```
+```javsacript
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
 
@@ -50,119 +49,16 @@ client.onMessageArrived = onMessageArrived;
 client.connect({onSuccess:onConnect});
 ```
 
-## Examples
-
-- Using the [aedes](https://github.com/mcollina/aedes) broker to handle websocket and standard connections
-```javacsript
+This is how you can use the [aedes](https://github.com/mcollina/aedes) broker to handle websocket and standard connections.
+```javascript
 var net = require('net');
 var aedes = require('aedes');
 var websocket = require('websocket-stream');
 
 exports.listen = function() {
-  aedes = aedes({
-    concurrency: 1000
-  });
+  aedes = aedes();
   var server = net.createServer(aedes.handle);
   server.listen(1883);
   websocket.createServer({port: 8080}, aedes.handle);
 }
-```
-
-- Usage of this package in a react native application using [redux sagas](https://github.com/yelouafi/redux-saga): 
-```javascript
-import { take, call, put, select } from 'redux-saga/effects'
-import Types from '../Actions/Types'
-import Actions from '../Actions/Creators'
-var DeviceInfo = require('react-native-device-info');
-
-function promisifyConnect(client) {
-  return new Promise(function(resolve, reject){
-    client.connect({
-      onSuccess: resolve,
-      onFailure: (err) => {
-        reject("mqtt failed to connect @ " + err.errorMessage);
-      }
-    });
-  });
-}
-
-function promisifySubscribe(client, topic) {
-  return new Promise(function(resolve, reject){
-    client.subscribe(topic, {
-      onSuccess: resolve,
-      onFailure: (err) => {
-        reject("mqtt failed to subscribe @ " + err.errorCode);
-      }
-    });
-  });
-}
-
-function * publish(topic, payload){
-  let client = yield select((state) => state.mqtt.client);
-  if(client && client.isConnected()) {
-    let message = new Paho.MQTT.Message(payload);
-    message.destinationName = topic;
-    yield call(client.send, message);
-  }
-}
-
-function * subscribe(topic) {
-  let client = yield select((state) => state.mqtt.client);
-  if(client && client.isConnected()) {
-    yield promisifySubscribe(client, topic).catch(function(err){
-      console.log(err);
-    });
-  }
-}
-
-function * connect(ip, dispatch) {
-  var client = new Paho.MQTT.Client(ip, 8080, "mobile @ " + DeviceInfo.getUniqueID());
-
-  client.onConnectionLost = () => {
-    console.log('lost connection');
-  };
-
-  client.onMessageArrived = (message) => {
-    dispatch(Actions.recievedMqttMessage(message.payloadString));
-  };
-
-  yield promisifyConnect(client).catch(function(err){
-    console.log(err);
-  });
-
-  if(client.isConnected()) {
-    yield put(Actions.mqttConnected(client));
-  }
-  else {
-    //yield put something else...
-  }
-}
-
-function * connectWatcher(dispatch) {
-  while (true) {
-    const { ip } = yield take(Types.MQTT_CONNECT);
-    yield call(connect, ip, dispatch);
-  }
-}
-
-function * publishWatcher(dispatch) {
-  while(true) {
-    const { topic, payload } = yield take(Types.MQTT_SEND_MESSAGE);
-    yield call(publish, topic, payload);
-  }
-}
-
-function * subscribeWatcher(dispatch) {
-  while(true) {
-    const { topic } = yield take(Types.MQTT_SUBSCRIBE);
-    yield call(subscribe, topic);
-  }
-}
-
-export default watchers = [
-  connectWatcher,
-  connectAndPublishWatcher,
-  publishWatcher,
-  subscribeWatcher
-];
 ```
